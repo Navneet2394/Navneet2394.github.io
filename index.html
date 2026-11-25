@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Navneet Shubham · Power BI Developer</title>
+<meta name="description" content="Navneet Shubham, Power BI Developer and BI Analyst with 9+ years in reporting and analytics across aerospace engineering operations, e-commerce and procurement. Live dashboards and project code.">
+<meta property="og:title" content="Navneet Shubham · Power BI Developer | BI Analyst">
+<meta property="og:description" content="Live Power BI-style dashboards, data models, DAX and SQL, plus 9+ years of BI delivery.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;700;800&family=Red+Hat+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: confident, specific, evidence first; a senior engineer's portfolio, not a sales page.
+   IDEA: the site behaves like a published Power BI app: a report canvas is the hero, projects are report pages.
+   PICTURE: a live "report tile" in the hero drawn from the portfolio's real data (36-month trend + KPI cards).
+   COLOUR and TYPE: oxford blue first screen, white panels, magenta for the headline numbers; Red Hat Display + Text.
+   LAYOUT: blue hero with name + report tile; impact strip; project cards with mini visuals; timeline; skills; contact band. */
+:root{color-scheme:light dark;
+--bg:light-dark(#ffffff,#070f26);--alt:light-dark(#eef1f6,#0b1533);--panel:light-dark(#ffffff,#0f1a3a);
+--ink:light-dark(#101828,#e8ecf5);--muted:light-dark(#566176,#9aa6c0);--line:light-dark(#dde2ec,#22305a);
+--band:#0b1f4b;--hot:#e0115f;--blue:light-dark(#1f4e9c,#7fa7ff);--soft:light-dark(#9fb3d9,#4a5f94);--good:light-dark(#1b7f5b,#4cc79a)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.6 "Red Hat Text",system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:"Red Hat Display",system-ui,sans-serif;margin:0;line-height:1.08;text-wrap:balance}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 max(5vw,16px)}
+.band{padding:clamp(40px,6vw,84px) 0}
+.alt{background:var(--alt)}
+/* nav */
+header.nav{position:sticky;top:0;z-index:10;background:var(--band);color:#fff;border-bottom:1px solid #1d3570}
+header.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:60px;flex-wrap:wrap}
+.logo{font:800 18px "Red Hat Display",sans-serif;text-decoration:none;white-space:nowrap}
+.logo b{color:var(--hot)}
+nav.links{display:flex;gap:2px;overflow-x:auto}
+nav.links a{flex:none;text-decoration:none;color:#cfd8ef;padding:10px 12px;border-radius:8px;font-weight:600;font-size:15px;min-height:44px;display:flex;align-items:center}
+nav.links a:hover{background:#163063;color:#fff}
+a:focus-visible,button:focus-visible{outline:3px solid var(--hot);outline-offset:2px}
+/* hero */
+.hero{background:var(--band);color:#fff;padding:clamp(36px,5vw,72px) 0 clamp(44px,6vw,80px)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(24px,4vw,56px);align-items:center}
+.kick{color:#b9c6e6;font-weight:600;margin:0 0 10px}
+.hero h1{font-size:clamp(36px,5vw,56px);font-weight:800}
+.hero h1 span{display:block;font-size:.5em;font-weight:700;color:#ffd1e1;margin-top:10px;line-height:1.2}
+.lede{color:#dbe3f5;font-size:18px;max-width:52ch;margin:18px 0 24px}
+.ctas{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:10px 18px;border-radius:10px;font-weight:700;text-decoration:none;border:1.5px solid transparent}
+.btn.p{background:var(--hot);color:#fff}.btn.s{border-color:#6f86c0;color:#fff}
+.btn.p:hover{filter:brightness(1.08)}.btn.s:hover{background:#163063}
+.meta{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:20px;color:#b9c6e6;font-size:14px}
+/* report tile */
+.tile{background:#fff;color:#101828;border-radius:16px;box-shadow:0 24px 60px rgba(0,0,0,.35);overflow:hidden}
+.tile .bar{display:flex;gap:6px;align-items:center;padding:10px 14px;background:#f2f5fa;border-bottom:1px solid #dde2ec;font-size:13px;color:#566176}
+.tile .bar i{width:9px;height:9px;border-radius:50%;background:#cfd6e4;display:inline-block}
+.tile .bar span{margin-left:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tk{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-bottom:1px solid #e6eaf2}
+.tk div{padding:12px 14px;border-right:1px solid #e6eaf2}.tk div:last-child{border:0}
+.tk small{display:block;color:#566176;font-size:12px}
+.tk strong{font:800 clamp(20px,2.2vw,26px) "Red Hat Display",sans-serif;white-space:nowrap}
+.tk em{display:block;font-style:normal;font-size:12px;color:#1b7f5b;white-space:nowrap}.tk em.dn{color:#c23b3b}
+.fig{position:relative;min-height:230px}.fig>svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.tile .fig{margin:8px 10px 6px}
+.tile .cap{font-size:12px;color:#566176;padding:0 14px 12px}
+svg text{font:11px "Red Hat Text",sans-serif;fill:#6b7489}
+/* impact */
+.impact{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.impact div{padding:22px 18px;border-right:1px solid var(--line)}.impact div:last-child{border-right:0}
+.impact strong{display:block;font:800 clamp(28px,3.4vw,40px)/1 "Red Hat Display",sans-serif;color:var(--hot);white-space:nowrap}
+.impact span{display:block;color:var(--muted);font-size:14px;margin-top:6px}
+/* sections */
+.sh{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:26px}
+.sh h2{font-size:clamp(28px,3.4vw,40px)}
+.sh p{margin:6px 0 0;color:var(--muted);max-width:62ch}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+@media(max-width:960px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.cards{grid-template-columns:minmax(0,1fr)}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.card .fig{min-height:150px;margin:14px 14px 0;background:light-dark(#f6f8fc,#0b1533);border-radius:10px}
+.card .fig svg text{fill:var(--muted)}
+.card .body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:10px;flex:1}
+.card h3{font-size:21px}
+.card .q{color:var(--muted);margin:0;font-size:15px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:0;padding:0}
+.tags li{font-size:12.5px;padding:3px 9px;border-radius:999px;background:light-dark(#eef1f8,#18244a);color:light-dark(#29406f,#c4d2f5);white-space:nowrap}
+.card .num{display:flex;gap:18px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+.card .num b{display:block;font:800 20px "Red Hat Display",sans-serif;color:var(--ink)}
+.card .go{display:flex;gap:10px;margin-top:auto;flex-wrap:wrap}
+.card .go a{flex:1 1 auto;text-align:center;justify-content:center;min-height:44px;display:inline-flex;align-items:center;padding:8px 14px;border-radius:9px;font-weight:700;font-size:14.5px;text-decoration:none;border:1.5px solid var(--line)}
+.card .go a.p{background:var(--band);color:#fff;border-color:var(--band)}
+:root[data-theme=dark] .card .go a.p{background:var(--hot);border-color:var(--hot)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .card .go a.p{background:var(--hot);border-color:var(--hot)}}
+.kit{margin-top:20px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center;padding:18px 20px;border:1px dashed var(--soft);border-radius:14px}
+.kit p{margin:4px 0 0;color:var(--muted);font-size:15px}
+@media(max-width:640px){.kit{grid-template-columns:minmax(0,1fr)}}
+/* timeline */
+.tl{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.tl li{display:grid;grid-template-columns:170px minmax(0,1fr);gap:24px;padding:22px 0;border-top:1px solid var(--line)}
+.tl .when{font-weight:700;color:var(--muted);font-size:15px;white-space:nowrap}
+.tl h3{font-size:20px}.tl .org{color:var(--muted);margin:2px 0 8px;font-size:15px}
+.tl ul{margin:0;padding-left:18px}.tl ul li{display:list-item;border:0;padding:3px 0}
+@media(max-width:700px){.tl li{grid-template-columns:minmax(0,1fr);gap:6px}}
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+@media(max-width:900px){.skills{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.skills{grid-template-columns:minmax(0,1fr)}}
+.sk{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.sk h3{font-size:17px;margin-bottom:10px}
+.lvl{display:grid;grid-template-columns:minmax(0,1fr) 84px;gap:10px;align-items:center;font-size:14.5px;padding:3px 0}
+.lvl .m{height:7px;border-radius:4px;background:light-dark(#e6eaf2,#1a2850);overflow:hidden}
+.lvl .m i{display:block;height:100%;background:var(--blue);border-radius:4px}
+.certs{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:22px}
+.cert{display:flex;gap:12px;align-items:center;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
+.cert b{display:grid;place-items:center;width:52px;height:52px;flex:none;border-radius:10px;background:var(--band);color:#fff;font:800 13px "Red Hat Display",sans-serif}
+.cert span{font-size:14.5px}.cert small{display:block;color:var(--muted)}
+/* contact */
+.contact{background:var(--band);color:#fff}
+.contact .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:28px;align-items:center}
+.contact h2{font-size:clamp(30px,3.8vw,44px)}
+.contact p{color:#dbe3f5;max-width:52ch}
+.clist{display:grid;gap:10px}
+.clist a,.clist div{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:14px 16px;border:1px solid #2a4482;border-radius:10px;text-decoration:none;min-height:48px}
+.clist a:hover{background:#163063}
+.clist small{color:#b9c6e6}.clist span{font-weight:600;overflow-wrap:anywhere;text-align:right}
+@media(max-width:820px){.hero .wrap,.contact .wrap{grid-template-columns:minmax(0,1fr)}}
+footer{padding:22px 0;color:var(--muted);font-size:13.5px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media(prefers-reduced-motion:no-preference){.tile{animation:rise .7s ease both}@keyframes rise{from{opacity:0;transform:translateY(14px)}}}
+</style>
+</head>
+<body>
+<header class="nav"><div class="wrap">
+  <a class="logo" href="#top" data-f="initials">NS<b>.</b>bi</a>
+  <nav class="links" aria-label="Sections">
+    <a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="assets/Navneet_Shubham_CV.pdf">Résumé</a><a href="#contact">Contact</a>
+  </nav>
+</div></header>
+
+<section class="hero" id="top"><div class="wrap">
+  <div>
+    <p class="kick" data-f="kicker">Power BI Developer · BI Analyst · Enterprise Reporting</p>
+    <h1><span style="display:inline;font-size:1em;color:#fff;margin:0" data-f="name">Navneet Shubham</span><span>I turn multi-source business data into Power BI reporting that leaders trust.</span></h1>
+    <p class="lede" data-f="lede">9+ years in reporting and analytics, 4+ building enterprise Power BI end to end: requirements, data preparation in Power Query and KNIME, SQL models, DAX and executive dashboards. Currently owning 25+ Power BI dashboards for Honeywell Aerospace engineering operations.</p>
+    <div class="ctas">
+      <a class="btn p" href="https://navneet2394.github.io/bi-projects/#retail">Open live dashboards →</a>
+      <a class="btn s" href="assets/Navneet_Shubham_CV.pdf">Download résumé</a>
+      <a class="btn s" id="ghBtn" href="#">GitHub</a>
+    </div>
+    <div class="meta"><span data-f="location">Bengaluru, India</span><span>Open to Power BI / BI roles</span><span>Relocation within India or remote</span></div>
+  </div>
+  <figure class="tile" style="margin:0" aria-label="Report preview built from the portfolio data">
+    <div class="bar"><i></i><i></i><i></i><span>Retail &amp; E-commerce Sales · Executive overview</span></div>
+    <div class="tk">
+      <div><small>Net sales 2025</small><strong>₹34.79 Cr</strong><em>▲ +12.7% vs PY</em></div>
+      <div><small>Plan attainment</small><strong>101.7%</strong><em>▲ ahead of plan</em></div>
+      <div><small>Gross margin</small><strong>22.0%</strong><em class="dn">flat for 3 years</em></div>
+    </div>
+    <div class="fig"><svg id="hero" role="img" aria-label="Monthly net sales versus target, 2023 to 2025"></svg></div>
+    <figcaption class="cap">From my Retail &amp; E-commerce project: monthly net sales (magenta) vs plan (dashed, from 2024) · synthetic data</figcaption>
+  </figure>
+</div></section>
+
+<div class="wrap"><div class="impact" data-f="impact"></div></div>
+
+<section class="band" id="projects"><div class="wrap">
+  <div class="sh"><div><h2>Featured projects</h2><p>Built on synthetic data that mirrors the domains I work in: e-commerce sales, finance and procurement. Each answers a business question, runs live in the browser, and ships with its data model, DAX, Power Query and SQL.</p></div></div>
+  <div class="cards">
+    <article class="card">
+      <div class="fig"><svg id="m1" role="img" aria-label="Retail net sales trend"></svg></div>
+      <div class="body">
+        <h3>Retail &amp; E-commerce Sales</h3>
+        <p class="q">Is growth profitable, and where is margin lost?</p>
+        <div class="num"><span><b>+12.7%</b>net sales YoY</span><span><b>40+</b>DAX measures</span><span><b>5</b>RLS regions, 1 role</span></div>
+        <ul class="tags"><li>Star schema</li><li>Dynamic RLS</li><li>TREATAS</li><li>Pareto / ABC</li><li>Incremental refresh</li></ul>
+        <div class="go"><a class="p" href="https://navneet2394.github.io/bi-projects/#retail">Live dashboard</a><a data-repo="01-retail-ecommerce-sales" href="#">Code &amp; data</a></div>
+      </div>
+    </article>
+    <article class="card">
+      <div class="fig"><svg id="m2" role="img" aria-label="Budget to actual net income variance bridge"></svg></div>
+      <div class="body">
+        <h3>Finance P&amp;L: Budget vs Actual</h3>
+        <p class="q">Revenue beat budget, so why did profit miss?</p>
+        <div class="num"><span><b>−6.4%</b>net income vs budget</span><span><b>11</b>P&amp;L lines, 5 subtotals</span><span><b>8</b>time calc items</span></div>
+        <ul class="tags"><li>Sign-convention model</li><li>Calculation groups</li><li>Waterfall bridge</li><li>Latest estimate</li></ul>
+        <div class="go"><a class="p" href="https://navneet2394.github.io/bi-projects/#finance">Live dashboard</a><a data-repo="02-finance-pnl-budget-variance" href="#">Code &amp; data</a></div>
+      </div>
+    </article>
+    <article class="card">
+      <div class="fig"><svg id="m3" role="img" aria-label="Monthly OTIF against 90 percent target"></svg></div>
+      <div class="body">
+        <h3>Procurement &amp; Supply Chain OTIF</h3>
+        <p class="q">Which suppliers put the shelves at risk before the festive peak?</p>
+        <div class="num"><span><b>80.9%</b>OTIF 2025 (target 90%)</span><span><b>14</b>suppliers ranked</span><span><b>22.5%</b>electronics below safety stock, Oct</span></div>
+        <ul class="tags"><li>Role-playing dates</li><li>USERELATIONSHIP</li><li>Semi-additive</li><li>Supplier scorecard</li></ul>
+        <div class="go"><a class="p" href="https://navneet2394.github.io/bi-projects/#supply">Live dashboard</a><a data-repo="03-procurement-supply-chain-otif" href="#">Code &amp; data</a></div>
+      </div>
+    </article>
+  </div>
+  <div class="kit">
+    <div><h3 style="font-size:19px">BI Governance Kit</h3><p>How I keep reporting consistent: naming and modelling rules, a release and review flow, a performance checklist and a corporate report theme.</p></div>
+    <a class="btn p" data-repo="04-governance-kit" href="#">View the kit</a>
+  </div>
+</div></section>
+
+<section class="band alt" id="experience"><div class="wrap">
+  <div class="sh"><div><h2>Experience</h2><p>From MIS reporting in Excel to enterprise Power BI for Honeywell Aerospace, with the same focus throughout: numbers the business can reconcile and act on.</p></div></div>
+  <ol class="tl" data-f="jobs"></ol>
+</div></section>
+
+<section class="band" id="skills"><div class="wrap">
+  <div class="sh"><div><h2>Skills</h2><p>Bars show depth of hands-on use at work.</p></div></div>
+  <div class="skills" data-f="skills"></div>
+  <div class="certs" data-f="certs"></div>
+</div></section>
+
+<section class="contact band" id="contact"><div class="wrap">
+  <div><h2>Let’s talk about your reporting.</h2><p>Hiring a Power BI developer or BI analyst? I’m happy to walk through any of these dashboards and the data work behind them.</p>
+    <div class="ctas" style="margin-top:18px"><a class="btn p" href="assets/Navneet_Shubham_CV.pdf">Download résumé (PDF)</a></div></div>
+  <div class="clist" data-f="contact"></div>
+</div></section>
+
+<footer><div class="wrap"><span data-f="copy">© 2026 Navneet Shubham</span><span>Dashboards use synthetic data generated by the portfolio scripts.</span></div></footer>
+
+<script>
+{
+/* ===================== EDIT YOUR DETAILS HERE ===================== */
+const ME={
+  name:"Navneet Shubham", initials:"NS",
+  kicker:"Power BI Developer · BI Analyst · Enterprise Reporting",
+  location:"Bengaluru, India",
+  email:"navneetshubham97@gmail.com",
+  phone:"+91 86970 97926",
+  linkedin:"https://www.linkedin.com/in/navneet1994",
+  github:"Navneet2394", repo:"bi-projects",
+  impact:[["9+","years in reporting & analytics"],["35+","BI dashboards delivered"],["40%","less manual reporting effort"],["10%+","sales efficiency gain"],["13%","annual PPC spend saved"]],
+  jobs:[
+    {when:"Jun 2026 – Present",title:"Senior Data Analyst (Power BI) · Engineering Operations",org:"LanceSoft India · Client: Honeywell Aerospace · Bengaluru",pts:[
+      "Own end-to-end Power BI reporting for engineering operations: 25+ dashboards across workforce and capacity, programs and quality, and finance and procurement.",
+      "Reconcile and validate multi-source data before every publication; maintain KPI definitions, business rules and source mappings.",
+      "Produce executive PMR, MOR and MOS reporting with trends, variances, risks and recommended actions.",
+      "Integrate workforce and program data for headcount, capacity and AOP planning; track PR/PO and CAPEX/OPEX."]},
+    {when:"Jun 2022 – Jun 2026",title:"Senior Data Analyst · Power BI & E-commerce Analytics",org:"Georgian Enterprises Pvt Ltd · Bengaluru",pts:[
+      "Built centralised Power BI and Looker Studio reporting across Amazon global marketplaces and Flipkart: sales, inventory, procurement, marketing.",
+      "Developed KNIME ETL workflows and SQL data marts with harmonised schemas, duplicate checks and star-schema models.",
+      "Cut manual reporting effort by 40% with automated dashboards and standardised business logic.",
+      "Improved sales efficiency by 10%+ and reduced annual PPC spend by 13% (INR 1.5 Cr → 1.3 Cr) through ROI analysis."]},
+    {when:"Aug 2019 – Jul 2021",title:"MIS Specialist",org:"Optimize IT Systems · Kolkata",pts:[
+      "Owned recurring KPI and management reporting; automated consolidation with Excel and Power Query.",
+      "Investigated data discrepancies, standardised definitions and trained users on new reports."]},
+    {when:"Oct 2016 – Jul 2019",title:"MIS Executive",org:"Stesalit Systems Ltd · Kolkata",pts:[
+      "Led a small MIS team for daily reporting and quality checks; reduced reporting errors by 20% with templates, automation and validation controls."]}
+  ],
+  // Self-assessed depth of hands-on use (0–100): adjust to what you can defend in an interview
+  skills:[
+    ["Power BI",[["Report & dashboard design",90],["Power Query (M)",85],["DAX measures",80],["Data modelling (star schema)",80]]],
+    ["Data preparation & SQL",[["KNIME ETL workflows",85],["SQL (joins, CTEs, aggregations)",80],["Data marts & dimensional models",75],["Validation & reconciliation",90]]],
+    ["Reporting & analysis",[["Executive / management reporting",90],["Advanced Excel",90],["Variance & trend analysis",85],["Looker Studio / Tableau",70]]],
+    ["Domains",[["E-commerce (Amazon, Flipkart)",90],["Engineering operations",80],["Procurement (PR/PO, CAPEX/OPEX)",75],["Amazon PPC analytics",80]]],
+    ["Programming",[["Python (Pandas, NumPy)",65],["Exploratory data analysis",75],["Process automation",75],["Git & GitHub",60]]],
+    ["Delivery",[["Requirement gathering",90],["Stakeholder communication",85],["User training & adoption",85],["Team leadership (MIS)",70]]]
+  ],
+  certs:[["B.E.","Electronics & Communication","Annamalai University · 2015"],["Google","Data Analytics Professional Certificate","Coursera · 2021"],["SQL","SQL and Relational Databases","Simplilearn · 2021"],["BA","Business Analytics","iNeuron · 2022"]]
+};
+/* ================================================================== */
+
+const MINI=/*MINI*/{"retail":[20912442,16742801,23777856,21111656,21342928,21302024,19114986,23679442,19770617,33961266,31116771,23050734,24628564,21543949,27292539,21796646,22668527,21916259,24595452,24146651,25157302,34748083,32858173,27337276,26880917,23458842,29643787,24500539,29239465,25845992,26831663,26940377,28190772,39374663,35907177,31116703],"target":[null,null,null,null,null,null,null,null,null,null,null,null,23135100,18505600,26235200,23379800,23607300,23515700,21100400,26163700,21817300,37510000,34316500,25538300,27231500,23887500,30321000,24170900,25120300,24277600,27168500,26740400,27854000,38462200,36434400,30296600],"otif":[0.8909,0.8135,0.8269,0.83,0.8183,0.8255,0.8054,0.8377,0.7255,0.737,0.8463,0.814,0.8131,0.8311,0.8095,0.8321,0.8216,0.8463,0.8225,0.8503,0.7079,0.7248,0.8311,0.8345,0.8126,0.8384,0.8207,0.8356,0.843,0.8067,0.8194,0.8339,0.7406,0.7269,0.8346,0.8254],"water":[5849902,-6575665,-807135,-8506,-16210,392052],"nib":18250130}/*END*/;
+const $=s=>document.querySelector(s),el=(t,c,txt)=>{const e=document.createElement(t);if(c)e.className=c;if(txt!=null)e.textContent=txt;return e};
+for(const k of ["name","kicker","location"])$(`[data-f=${k}]`).textContent=ME[k];
+$("[data-f=initials]").firstChild.textContent=ME.initials;
+$("[data-f=copy]").textContent=`© ${new Date().getFullYear()} ${ME.name}`;
+document.title=`${ME.name} · Power BI Developer | BI Analyst`;
+const repo=`https://github.com/${ME.github}/${ME.repo}`;
+$("#ghBtn").href=repo;
+document.querySelectorAll("[data-repo]").forEach(a=>a.href=`${repo}/tree/main/${a.dataset.repo}`);
+
+const imp=$("[data-f=impact]");
+for(const [n,l] of ME.impact){const d=el("div");d.append(el("strong",null,n),el("span",null,l));imp.append(d)}
+
+const jobs=$("[data-f=jobs]");
+for(const j of ME.jobs){const li=el("li"),w=el("div","when",j.when),b=el("div"),ul=el("ul");
+  b.append(el("h3",null,j.title),el("p","org",j.org));for(const p of j.pts)ul.append(el("li",null,p));b.append(ul);li.append(w,b);jobs.append(li)}
+
+const sk=$("[data-f=skills]");
+for(const [g,items] of ME.skills){const c=el("div","sk");c.append(el("h3",null,g));
+  for(const [n,v] of items){const r=el("div","lvl"),m=el("div","m"),i=el("i");i.style.width=v+"%";m.append(i);m.setAttribute("role","meter");m.setAttribute("aria-valuenow",v);m.setAttribute("aria-label",n);r.append(el("span",null,n),m);c.append(r)}
+  sk.append(c)}
+const ce=$("[data-f=certs]");
+for(const [a,b,c] of ME.certs){const d=el("div","cert"),t=el("span");t.append(document.createTextNode(b),el("small",null,c));d.append(el("b",null,a),t);ce.append(d)}
+
+const cl=$("[data-f=contact]");
+const rows=[["Email",ME.email,`mailto:${ME.email}`],["LinkedIn",ME.linkedin.replace(/^https?:\/\/(www\.)?/,""),ME.linkedin],["GitHub",`github.com/${ME.github}`,`https://github.com/${ME.github}`],["Phone",ME.phone,null]];
+for(const [k,v,h] of rows){const a=el(h?"a":"div");if(h)a.href=h;a.append(el("small",null,k),el("span",null,v));cl.append(a)}
+
+/* ---------- charts ---------- */
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+function lines(svg,series,{ref,min,pad=[8,8,8,8],axis}={}){
+  const W=svg.clientWidth,H=svg.clientHeight;if(!W||!H)return;
+  const [T,R,B,L]=pad,all=series.flatMap(s=>s.v.filter(v=>v!=null)).concat(ref!=null?[ref]:[]);
+  const lo=min??Math.min(...all),hi=Math.max(...all)*1.04,n=series[0].v.length;
+  const x=i=>L+i*(W-L-R)/(n-1),y=v=>T+(H-T-B)*(1-(v-lo)/(hi-lo));
+  let g="";
+  if(axis){for(let k=0;k<=3;k++){const v=lo+(hi-lo)*k/3;g+=`<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" stroke="#e6eaf2"/><text x="${L-6}" y="${y(v)+4}" text-anchor="end">${axis(v)}</text>`}
+    ["2023","2024","2025"].forEach((t,i)=>g+=`<text x="${x(i*12+6)}" y="${H-4}" text-anchor="middle">${t}</text>`)}
+  if(ref!=null)g+=`<line x1="${L}" x2="${W-R}" y1="${y(ref)}" y2="${y(ref)}" stroke="${css('--ink')}" stroke-dasharray="3 4" opacity=".7"/><text x="${W-R}" y="${y(ref)-5}" text-anchor="end">target ${Math.round(ref*100)}%</text>`;
+  for(const s of series){const pts=s.v.map((v,i)=>v==null?null:`${x(i).toFixed(1)},${y(v).toFixed(1)}`).filter(Boolean).join(" ");
+    if(s.fill)g+=`<polygon points="${x(0)},${y(lo)} ${pts} ${x(n-1)},${y(lo)}" fill="${s.c}" opacity=".12"/>`;
+    g+=`<polyline points="${pts}" fill="none" stroke="${s.c}" stroke-width="${s.w||2.4}" ${s.d?'stroke-dasharray="5 4"':''} stroke-linejoin="round"/>`}
+  svg.innerHTML=g;
+}
+function water(svg){
+  const W=svg.clientWidth,H=svg.clientHeight;if(!W)return;
+  const nib=MINI.nib,steps=[{v:nib,t:1},...MINI.water.map(v=>({v})),{v:nib+MINI.water.reduce((a,b)=>a+b,0),t:1}];
+  let run=0;const seg=steps.map(s=>{if(s.t){run=s.v;return{...s,a:0,b:s.v}}const a=run;run+=s.v;return{...s,a,b:run}});
+  const vals=seg.flatMap(s=>s.t?[s.b]:[s.a,s.b]),mn=Math.min(...vals),mx=Math.max(...vals),lo=mn-(mx-mn)*1.2,hi=mx+(mx-mn)*.25;
+  seg.forEach(s=>{if(s.t)s.a=lo});
+  const bw=(W-16)/seg.length,y=v=>10+(H-30)*(1-(v-lo)/(hi-lo)),labs=["Bud.","Rev","COGS","Opex","D&A","Fin","Tax","Act."];
+  svg.innerHTML=seg.map((s,i)=>{const x0=8+i*bw+bw*.18,w=bw*.64,top=y(Math.max(s.a,s.b)),h=Math.max(2,Math.abs(y(s.a)-y(s.b)));
+    return `<rect x="${x0}" y="${top}" width="${w}" height="${h}" rx="2" fill="${s.t?css('--blue'):s.v>=0?css('--good'):css('--hot')}"/><text x="${x0+w/2}" y="${H-6}" text-anchor="middle">${labs[i]}</text>`}).join("");
+}
+const draw={
+  hero:()=>lines($("#hero"),[{v:MINI.target,c:"#9fb3d9",d:1,w:2},{v:MINI.retail,c:"#e0115f",fill:1}],{min:0,pad:[8,10,20,44],axis:v=>"₹"+(v/1e7).toFixed(1)+" Cr"}),
+  m1:()=>lines($("#m1"),[{v:MINI.retail,c:css("--hot"),fill:1}],{min:0,pad:[14,12,14,12]}),
+  m2:()=>water($("#m2")),
+  m3:()=>lines($("#m3"),[{v:MINI.otif,c:css("--hot")}],{min:.7,ref:.9,pad:[16,12,12,12]})
+};
+const all=()=>Object.values(draw).forEach(f=>f());
+const ro=new ResizeObserver(all);document.querySelectorAll(".fig").forEach(f=>ro.observe(f));
+new MutationObserver(all).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change",all);
+all();
+}
+</script>
+</body>
+</html>
