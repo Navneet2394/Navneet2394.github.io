@@ -126,6 +126,7 @@ svg text{font:11px "Red Hat Text",sans-serif;fill:#6b7489}
 footer{padding:22px 0;color:var(--muted);font-size:13.5px}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 @media(prefers-reduced-motion:no-preference){.tile{animation:rise .7s ease both}@keyframes rise{from{opacity:0;transform:translateY(14px)}}}
+a.cert{color:inherit;text-decoration:none}a.cert:hover small{text-decoration:underline}
 </style>
 </head>
 <body>
@@ -253,13 +254,13 @@ const ME={
   // Self-assessed depth of hands-on use (0–100): adjust to what you can defend in an interview
   skills:[
     ["Power BI",[["Report & dashboard design",90],["Power Query (M)",85],["DAX measures",80],["Data modelling (star schema)",80]]],
-    ["Data preparation & SQL",[["KNIME ETL workflows",85],["SQL (joins, CTEs, aggregations)",80],["Data marts & dimensional models",75],["Validation & reconciliation",90]]],
+    ["Data preparation & SQL",[["KNIME ETL workflows",85],["SQL (joins, CTEs, window functions)",80],["Data marts & dimensional models",75],["Validation & reconciliation",90]]],
     ["Reporting & analysis",[["Executive / management reporting",90],["Advanced Excel",90],["Variance & trend analysis",85],["Looker Studio / Tableau",70]]],
     ["Domains",[["E-commerce (Amazon, Flipkart)",90],["Engineering operations",80],["Procurement (PR/PO, CAPEX/OPEX)",75],["Amazon PPC analytics",80]]],
-    ["Programming",[["Python (Pandas, NumPy)",65],["Exploratory data analysis",75],["Process automation",75],["Git & GitHub",60]]],
+    ["Programming",[["Python (Pandas, NumPy)",65],["Exploratory data analysis",75],["Statistics & outlier detection",70],["Git & GitHub",60]]],
     ["Delivery",[["Requirement gathering",90],["Stakeholder communication",85],["User training & adoption",85],["Team leadership (MIS)",70]]]
   ],
-  certs:[["B.E.","Electronics & Communication","Annamalai University · 2015"],["Google","Data Analytics Professional Certificate","Coursera · 2021"],["SQL","SQL and Relational Databases","Simplilearn · 2021"],["BA","Business Analytics","iNeuron · 2022"]]
+  certs:[["B.E.","Electronics & Communication","Annamalai University · 2015"],["Google","Data Analytics Professional Certificate","Coursera · 2021 · verify","https://coursera.org/share/b113f9ebb61cdc9b62dd50c1474ee9dd"],["Google","Data Analytics Capstone: Case Study","Coursera · 2022 · verify","https://coursera.org/verify/J2TTWXQVLQAG"],["Python","Programming for Everybody (U. Michigan)","Coursera · 2021 · verify","https://www.coursera.org/account/accomplishments/verify/7PXDSRZVSKY3"],["SQL","SQL and Relational Databases","Simplilearn · 2021"],["BA","Business Analytics","iNeuron · 2022"]]
 };
 /* ================================================================== */
 
@@ -285,7 +286,7 @@ for(const [g,items] of ME.skills){const c=el("div","sk");c.append(el("h3",null,g
   for(const [n,v] of items){const r=el("div","lvl"),m=el("div","m"),i=el("i");i.style.width=v+"%";m.append(i);m.setAttribute("role","meter");m.setAttribute("aria-valuenow",v);m.setAttribute("aria-label",n);r.append(el("span",null,n),m);c.append(r)}
   sk.append(c)}
 const ce=$("[data-f=certs]");
-for(const [a,b,c] of ME.certs){const d=el("div","cert"),t=el("span");t.append(document.createTextNode(b),el("small",null,c));d.append(el("b",null,a),t);ce.append(d)}
+for(const [a,b,c,u] of ME.certs){const d=el(u?"a":"div","cert"),t=el("span");if(u){d.href=u;d.target="_blank";d.rel="noopener"}t.append(document.createTextNode(b),el("small",null,c));d.append(el("b",null,a),t);ce.append(d)}
 
 const cl=$("[data-f=contact]");
 const rows=[["Email",ME.email,`mailto:${ME.email}`],["LinkedIn",ME.linkedin.replace(/^https?:\/\/(www\.)?/,""),ME.linkedin],["GitHub",`github.com/${ME.github}`,`https://github.com/${ME.github}`],["Phone",ME.phone,null]];
